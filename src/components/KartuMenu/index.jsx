@@ -2,7 +2,7 @@ import React from "react"
 import LabelHarga from "../LabelHarga"
 import { useState } from "react"
 
-export default function KartuMenu({nama, harga, kategori = "Makanan"}){
+export default function KartuMenu({nama, harga, kategori = "Makanan", id, onHapus}){
     const [Jumlah, setJumlah] = useState(0)
     const [Catatan, setCatatan] = useState("")
 
@@ -12,7 +12,7 @@ export default function KartuMenu({nama, harga, kategori = "Makanan"}){
 
     return(
         <>
-            <div className="kartu">
+            <div id={id} className="kartu">
                 <h1>{nama}</h1>
                 <p>{kategori}</p>
                 <LabelHarga nilai={harga} />
@@ -35,6 +35,7 @@ export default function KartuMenu({nama, harga, kategori = "Makanan"}){
                 {Catatan !== "" &&(
                     <p>Catatan: {Catatan}</p>
                 )}
+                <button onClick={() => onHapus()}>Hapus</button>
             </div>
         </>     
     )
